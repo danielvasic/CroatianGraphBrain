@@ -41,7 +41,9 @@ if USE_CYTHON:
         Extension('graphbrain.parsers.parser_en',
                   ['graphbrain/parsers/parser_en.pyx']),
         Extension('graphbrain.parsers.parser_de',
-                  ['graphbrain/parsers/parser_de.pyx'])
+                  ['graphbrain/parsers/parser_de.pyx']),
+        Extension('graphbrain.parsers.parser_hr',
+                  ['graphbrain/parsers/parser_hr.pyx'])
     ]
     ext_modules = cythonize(ext_modules,
                             annotate=CYTHON_ANNOTATE,

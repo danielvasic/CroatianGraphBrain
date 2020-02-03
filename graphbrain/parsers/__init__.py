@@ -1,6 +1,7 @@
 from .nlp import print_tree
 from .parser_en import ParserEN
 from .parser_de import ParserDE
+from .parser_hr import ParserHR
 
 
 def create_parser(name, lemmas=False):
@@ -19,5 +20,7 @@ def create_parser(name, lemmas=False):
         return ParserEN(lemmas=lemmas)
     if name == 'de':
         return ParserDE(lemmas=lemmas)
+    if name == 'hr':
+        return ParserHR(lemmas=lemmas)
     else:
         raise RuntimeError('Unknown parser: {}'.format(name))
