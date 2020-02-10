@@ -69,7 +69,8 @@ class ParserHR(AlphaBeta):
             else:
                 return self._concept_type_and_subtype(token)
         elif dep in {'appos', 'attr', 'compound', 'dative', 'dep', 'dobj',
-                     'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
+                     'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat', 
+                     'discourse', 'fixed', 'iobj', 'org', 'goeswith', 'orphan', 'expl_pv'}:
             return self._concept_type_and_subtype(token)
         elif dep in {'advcl', 'csubj', 'csubjpass', 'parataxis'}:
             return 'p'
