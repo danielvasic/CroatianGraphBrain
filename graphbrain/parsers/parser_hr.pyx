@@ -162,36 +162,36 @@ class ParserHR(AlphaBeta):
         dep = token.dep_
         if dep == 'nmod':
             return 'cm'
-        if tag[:1] == 'A':
+        if tag[:1] == 'A' and tag[2] == 'p':
             return 'ca'
         elif tag[:1] == 'N':
-            subtype = 'p' if 'P' in tag else 'c'
-            sing_plur = 'p' if tag[-2] == 's' else 's'
+            subtype = 'p' if tag[2]=='p' else 'c'
+            sing_plur = 's' if tag[-2] == 's' else 'p'
             return 'c{}.{}'.format(subtype, sing_plur)
-        elif tag[:1] == 'M':
+        elif tag[:1] == 'M' and tag[:2] != "Ml":
             return 'c#'
-        elif tag[:2] == 'Pd':
+        elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
             return 'cd'
-        elif tag[:1] == 'P':
+        elif tag[:2] == 'Pq':
             return 'cw'
-        elif tag[:2] == 'Pp':
+        elif tag[:2] == 'Pp' or tag[:2] == 'Pl':
             return 'ci'
         else:
             return 'c'
 
     def _modifier_type_and_subtype(self, token):
         tag = token.tag_
-        if tag[:1] == 'A':
+        if tag[:1] == 'A' and tag[2] == 'p':
             return 'ma'
-        elif tag[:3] == 'Agc':
+        elif tag[:1] == 'A' and tag[2] == 'c':
             return 'mc'
-        elif tag[:3] == 'Ags':
+        elif tag[:1] == 'A' and tag[2] == 's':
             return 'ms'
-        elif tag == 'DT':
+        elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
             return 'md'
-        # elif tag == 'PDT':
-        #     return 'mp'
-        elif tag == 'WDT':
+        elif tag in ["Agpmpny", "Mls", "Rgp"]:
+             return 'mp'
+        elif tag[:2] == 'Pq':
             return 'mw'
         elif tag[:1] == 'M':
             return 'm#'

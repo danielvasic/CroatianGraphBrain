@@ -1048,6 +1048,11 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
 /* PyIntCompare.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_EqObjC(PyObject *op1, PyObject *op2, long intval, long inplace);
 
+/* PyBoolOrNullFromLong.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyBoolOrNull_FromLong(long b) {
+    return unlikely(b < 0) ? NULL : __Pyx_PyBool_FromLong(b);
+}
+
 /* PySequenceContains.proto */
 static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
     int result = PySequence_Contains(seq, item);
@@ -1259,7 +1264,6 @@ static const char __pyx_k_[] = "?";
 static const char __pyx_k_A[] = "A";
 static const char __pyx_k_M[] = "M";
 static const char __pyx_k_N[] = "N";
-static const char __pyx_k_P[] = "P";
 static const char __pyx_k_V[] = "V";
 static const char __pyx_k_a[] = "a";
 static const char __pyx_k_b[] = "b";
@@ -1279,8 +1283,10 @@ static const char __pyx_k_Cc[] = "Cc";
 static const char __pyx_k_Cs[] = "Cs";
 static const char __pyx_k_DT[] = "DT";
 static const char __pyx_k_EX[] = "EX";
-static const char __pyx_k_Pd[] = "Pd";
+static const char __pyx_k_Ml[] = "Ml";
+static const char __pyx_k_Pl[] = "Pl";
 static const char __pyx_k_Pp[] = "Pp";
+static const char __pyx_k_Pq[] = "Pq";
 static const char __pyx_k_Qo[] = "Qo";
 static const char __pyx_k_TO[] = "TO";
 static const char __pyx_k__2[] = "";
@@ -1315,12 +1321,10 @@ static const char __pyx_k_pc[] = "pc";
 static const char __pyx_k_pd[] = "pd";
 static const char __pyx_k_pm[] = "pm";
 static const char __pyx_k_pr[] = "pr";
-static const char __pyx_k_Agc[] = "Agc";
-static const char __pyx_k_Ags[] = "Ags";
+static const char __pyx_k_Mls[] = "Mls";
 static const char __pyx_k_Rgc[] = "Rgc";
 static const char __pyx_k_Rgp[] = "Rgp";
 static const char __pyx_k_Rgs[] = "Rgs";
-static const char __pyx_k_WDT[] = "WDT";
 static const char __pyx_k_acl[] = "acl";
 static const char __pyx_k_aux[] = "aux";
 static const char __pyx_k_b_2[] = "b+";
@@ -1347,6 +1351,7 @@ static const char __pyx_k_conj[] = "conj";
 static const char __pyx_k_dobj[] = "dobj";
 static const char __pyx_k_edge[] = "edge";
 static const char __pyx_k_expl[] = "expl";
+static const char __pyx_k_flat[] = "flat";
 static const char __pyx_k_head[] = "head";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_intj[] = "intj";
@@ -1385,6 +1390,17 @@ static const char __pyx_k_tag_2[] = "tag";
 static const char __pyx_k_tense[] = "tense";
 static const char __pyx_k_token[] = "token";
 static const char __pyx_k_xcomp[] = "xcomp";
+static const char __pyx_k_Mlompa[] = "Mlompa";
+static const char __pyx_k_Mlomsn[] = "Mlomsn";
+static const char __pyx_k_Pd_fpa[] = "Pd-fpa";
+static const char __pyx_k_Pd_fsa[] = "Pd-fsa";
+static const char __pyx_k_Pd_fsl[] = "Pd-fsl";
+static const char __pyx_k_Pi3m_n[] = "Pi3m-n";
+static const char __pyx_k_Pi_fsa[] = "Pi-fsa";
+static const char __pyx_k_Pi_mpa[] = "Pi-mpa";
+static const char __pyx_k_Pi_msg[] = "Pi-msg";
+static const char __pyx_k_Pi_msl[] = "Pi-msl";
+static const char __pyx_k_Pi_msn[] = "Pi-msn";
 static const char __pyx_k_advmod[] = "advmod";
 static const char __pyx_k_aspect[] = "aspect";
 static const char __pyx_k_dative[] = "dative";
@@ -1397,6 +1413,10 @@ static const char __pyx_k_nummod[] = "nummod";
 static const char __pyx_k_person[] = "person";
 static const char __pyx_k_predet[] = "predet";
 static const char __pyx_k_subtok[] = "subtok";
+static const char __pyx_k_Agpfpay[] = "Agpfpay";
+static const char __pyx_k_Agpmpny[] = "Agpmpny";
+static const char __pyx_k_Agpmsnn[] = "Agpmsnn";
+static const char __pyx_k_Pi_msan[] = "Pi-msan";
 static const char __pyx_k_auxpass[] = "auxpass";
 static const char __pyx_k_concept[] = "concept";
 static const char __pyx_k_is_atom[] = "is_atom";
@@ -1468,16 +1488,20 @@ static const char __pyx_k_Unknown_dependency_token_type_to[] = "Unknown dependen
 static const char __pyx_k_graphbrain_parsers_parser_hr_pyx[] = "graphbrain/parsers/parser_hr.pyx";
 static PyObject *__pyx_kp_u_;
 static PyObject *__pyx_n_u_A;
-static PyObject *__pyx_n_u_Agc;
-static PyObject *__pyx_n_u_Ags;
+static PyObject *__pyx_n_u_Agpfpay;
+static PyObject *__pyx_n_u_Agpmpny;
+static PyObject *__pyx_n_u_Agpmsnn;
 static PyObject *__pyx_n_s_AlphaBeta;
 static PyObject *__pyx_n_u_Cc;
 static PyObject *__pyx_n_u_Cs;
 static PyObject *__pyx_n_u_DT;
 static PyObject *__pyx_n_u_EX;
 static PyObject *__pyx_n_u_M;
+static PyObject *__pyx_n_u_Ml;
+static PyObject *__pyx_n_u_Mlompa;
+static PyObject *__pyx_n_u_Mlomsn;
+static PyObject *__pyx_n_u_Mls;
 static PyObject *__pyx_n_u_N;
-static PyObject *__pyx_n_u_P;
 static PyObject *__pyx_n_s_ParserHR;
 static PyObject *__pyx_n_s_ParserHR___init;
 static PyObject *__pyx_n_s_ParserHR__arg_type;
@@ -1494,8 +1518,19 @@ static PyObject *__pyx_n_s_ParserHR__modifier_type_and_subt;
 static PyObject *__pyx_n_s_ParserHR__predicate_post_type_an;
 static PyObject *__pyx_n_s_ParserHR__token_type;
 static PyObject *__pyx_n_s_ParserHR__verb_features;
-static PyObject *__pyx_n_u_Pd;
+static PyObject *__pyx_kp_u_Pd_fpa;
+static PyObject *__pyx_kp_u_Pd_fsa;
+static PyObject *__pyx_kp_u_Pd_fsl;
+static PyObject *__pyx_kp_u_Pi3m_n;
+static PyObject *__pyx_kp_u_Pi_fsa;
+static PyObject *__pyx_kp_u_Pi_mpa;
+static PyObject *__pyx_kp_u_Pi_msan;
+static PyObject *__pyx_kp_u_Pi_msg;
+static PyObject *__pyx_kp_u_Pi_msl;
+static PyObject *__pyx_kp_u_Pi_msn;
+static PyObject *__pyx_n_u_Pl;
 static PyObject *__pyx_n_u_Pp;
+static PyObject *__pyx_n_u_Pq;
 static PyObject *__pyx_n_u_Qo;
 static PyObject *__pyx_n_u_ROOT;
 static PyObject *__pyx_n_u_Rgc;
@@ -1504,7 +1539,6 @@ static PyObject *__pyx_n_u_Rgs;
 static PyObject *__pyx_n_u_TO;
 static PyObject *__pyx_kp_u_Unknown_dependency_token_type_to;
 static PyObject *__pyx_n_u_V;
-static PyObject *__pyx_n_u_WDT;
 static PyObject *__pyx_kp_u__2;
 static PyObject *__pyx_kp_u__7;
 static PyObject *__pyx_n_u__8;
@@ -1574,6 +1608,7 @@ static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_edge;
 static PyObject *__pyx_n_u_expl;
 static PyObject *__pyx_n_s_features;
+static PyObject *__pyx_n_u_flat;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_graphbrain;
 static PyObject *__pyx_n_s_graphbrain_parsers_parser_hr;
@@ -2748,7 +2783,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
  *             else:
  *                 return self._concept_type_and_subtype(token)             # <<<<<<<<<<<<<<
  *         elif dep in {'appos', 'attr', 'compound', 'dative', 'dep', 'dobj',
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  */
     /*else*/ {
       __Pyx_XDECREF(__pyx_r);
@@ -2787,7 +2822,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
  *             else:
  *                 return self._concept_type_and_subtype(token)
  *         elif dep in {'appos', 'attr', 'compound', 'dative', 'dep', 'dobj',             # <<<<<<<<<<<<<<
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  *             return self._concept_type_and_subtype(token)
  */
   __Pyx_INCREF(__pyx_v_dep);
@@ -2865,6 +2900,12 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     goto __pyx_L10_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_obj, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_3 = __pyx_t_2;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_flat, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
   __pyx_L10_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2873,7 +2914,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
 
     /* "graphbrain/parsers/parser_hr.pyx":73
  *         elif dep in {'appos', 'attr', 'compound', 'dative', 'dep', 'dobj',
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  *             return self._concept_type_and_subtype(token)             # <<<<<<<<<<<<<<
  *         elif dep in {'advcl', 'csubj', 'csubjpass', 'parataxis'}:
  *             return 'p'
@@ -2904,13 +2945,13 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
  *             else:
  *                 return self._concept_type_and_subtype(token)
  *         elif dep in {'appos', 'attr', 'compound', 'dative', 'dep', 'dobj',             # <<<<<<<<<<<<<<
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  *             return self._concept_type_and_subtype(token)
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":74
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  *             return self._concept_type_and_subtype(token)
  *         elif dep in {'advcl', 'csubj', 'csubjpass', 'parataxis'}:             # <<<<<<<<<<<<<<
  *             return 'p'
@@ -2922,23 +2963,23 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L23_bool_binop_done;
+    goto __pyx_L24_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_csubj, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L23_bool_binop_done;
+    goto __pyx_L24_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_csubjpass, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L23_bool_binop_done;
+    goto __pyx_L24_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_parataxis, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_3;
-  __pyx_L23_bool_binop_done:;
+  __pyx_L24_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -2956,7 +2997,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":74
- *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj'}:
+ *                      'nsubj', 'nsubjpass', 'oprd', 'pobj', 'meta', 'obl', 'obj', 'flat'}:
  *             return self._concept_type_and_subtype(token)
  *         elif dep in {'advcl', 'csubj', 'csubjpass', 'parataxis'}:             # <<<<<<<<<<<<<<
  *             return 'p'
@@ -2977,17 +3018,17 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L27_bool_binop_done;
+    goto __pyx_L28_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_ccomp, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L27_bool_binop_done;
+    goto __pyx_L28_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_cop, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
-  __pyx_L27_bool_binop_done:;
+  __pyx_L28_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
@@ -3094,17 +3135,17 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L31_bool_binop_done;
+    goto __pyx_L32_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_pcomp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L31_bool_binop_done;
+    goto __pyx_L32_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_xcomp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_3;
-  __pyx_L31_bool_binop_done:;
+  __pyx_L32_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -3182,23 +3223,23 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L35_bool_binop_done;
+    goto __pyx_L36_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_nummod, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L35_bool_binop_done;
+    goto __pyx_L36_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_preconj, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L35_bool_binop_done;
+    goto __pyx_L36_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_predet, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
-  __pyx_L35_bool_binop_done:;
+  __pyx_L36_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
@@ -3358,29 +3399,29 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L40_bool_binop_done;
+    goto __pyx_L41_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_auxpass, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L40_bool_binop_done;
+    goto __pyx_L41_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_expl, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L40_bool_binop_done;
+    goto __pyx_L41_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_prt, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L40_bool_binop_done;
+    goto __pyx_L41_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_quantmod, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_3;
-  __pyx_L40_bool_binop_done:;
+  __pyx_L41_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -3495,11 +3536,11 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_2) {
   } else {
     __pyx_t_3 = __pyx_t_2;
-    goto __pyx_L47_bool_binop_done;
+    goto __pyx_L48_bool_binop_done;
   }
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_npadvmod, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
-  __pyx_L47_bool_binop_done:;
+  __pyx_L48_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (__pyx_t_2) {
@@ -3853,11 +3894,11 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
   if (!__pyx_t_3) {
   } else {
     __pyx_t_2 = __pyx_t_3;
-    goto __pyx_L52_bool_binop_done;
+    goto __pyx_L53_bool_binop_done;
   }
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_5, __pyx_n_u_punct, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 119, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_3;
-  __pyx_L52_bool_binop_done:;
+  __pyx_L53_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
@@ -3974,23 +4015,23 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     if (!__pyx_t_2) {
     } else {
       __pyx_t_3 = __pyx_t_2;
-      goto __pyx_L55_bool_binop_done;
+      goto __pyx_L56_bool_binop_done;
     }
     __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_x, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
     if (!__pyx_t_2) {
     } else {
       __pyx_t_3 = __pyx_t_2;
-      goto __pyx_L55_bool_binop_done;
+      goto __pyx_L56_bool_binop_done;
     }
     __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_t, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
     if (!__pyx_t_2) {
     } else {
       __pyx_t_3 = __pyx_t_2;
-      goto __pyx_L55_bool_binop_done;
+      goto __pyx_L56_bool_binop_done;
     }
     __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_b, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
     __pyx_t_3 = __pyx_t_2;
-    __pyx_L55_bool_binop_done:;
+    __pyx_L56_bool_binop_done:;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_2 = (__pyx_t_3 != 0);
     if (__pyx_t_2) {
@@ -4257,7 +4298,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     if (__pyx_t_3) {
     } else {
       __pyx_t_2 = __pyx_t_3;
-      goto __pyx_L62_bool_binop_done;
+      goto __pyx_L63_bool_binop_done;
     }
     __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_verb); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -4279,7 +4320,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_2 = __pyx_t_3;
-    __pyx_L62_bool_binop_done:;
+    __pyx_L63_bool_binop_done:;
     if (__pyx_t_2) {
 
       /* "graphbrain/parsers/parser_hr.pyx":142
@@ -4364,11 +4405,11 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_4_token_typ
     if (__pyx_t_3) {
     } else {
       __pyx_t_2 = __pyx_t_3;
-      goto __pyx_L65_bool_binop_done;
+      goto __pyx_L66_bool_binop_done;
     }
     __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_head_subtype, __pyx_n_u_c, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
     __pyx_t_2 = __pyx_t_3;
-    __pyx_L65_bool_binop_done:;
+    __pyx_L66_bool_binop_done:;
     if (__pyx_t_2) {
 
       /* "graphbrain/parsers/parser_hr.pyx":147
@@ -4724,10 +4765,11 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_3;
   PyObject *__pyx_t_4 = NULL;
-  int __pyx_t_5;
-  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("_concept_type_and_subtype", 0);
 
   /* "graphbrain/parsers/parser_hr.pyx":161
@@ -4759,7 +4801,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
  *         dep = token.dep_
  *         if dep == 'nmod':             # <<<<<<<<<<<<<<
  *             return 'cm'
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_dep, __pyx_n_u_nmod, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
   if (__pyx_t_2) {
@@ -4768,7 +4810,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
  *         dep = token.dep_
  *         if dep == 'nmod':
  *             return 'cm'             # <<<<<<<<<<<<<<
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ca'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -4781,29 +4823,40 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
  *         dep = token.dep_
  *         if dep == 'nmod':             # <<<<<<<<<<<<<<
  *             return 'cm'
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":165
  *         if dep == 'nmod':
  *             return 'cm'
- *         if tag[:1] == 'A':             # <<<<<<<<<<<<<<
+ *         if tag[:1] == 'A' and tag[2] == 'p':             # <<<<<<<<<<<<<<
  *             return 'ca'
  *         elif tag[:1] == 'N':
  */
   __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L5_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_tag, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_p, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L5_bool_binop_done:;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":166
  *             return 'cm'
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ca'             # <<<<<<<<<<<<<<
  *         elif tag[:1] == 'N':
- *             subtype = 'p' if 'P' in tag else 'c'
+ *             subtype = 'p' if tag[2]=='p' else 'c'
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_n_u_ca);
@@ -4813,18 +4866,18 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     /* "graphbrain/parsers/parser_hr.pyx":165
  *         if dep == 'nmod':
  *             return 'cm'
- *         if tag[:1] == 'A':             # <<<<<<<<<<<<<<
+ *         if tag[:1] == 'A' and tag[2] == 'p':             # <<<<<<<<<<<<<<
  *             return 'ca'
  *         elif tag[:1] == 'N':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":167
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ca'
  *         elif tag[:1] == 'N':             # <<<<<<<<<<<<<<
- *             subtype = 'p' if 'P' in tag else 'c'
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             subtype = 'p' if tag[2]=='p' else 'c'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  */
   __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4835,12 +4888,15 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     /* "graphbrain/parsers/parser_hr.pyx":168
  *             return 'ca'
  *         elif tag[:1] == 'N':
- *             subtype = 'p' if 'P' in tag else 'c'             # <<<<<<<<<<<<<<
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             subtype = 'p' if tag[2]=='p' else 'c'             # <<<<<<<<<<<<<<
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  *             return 'c{}.{}'.format(subtype, sing_plur)
  */
-    __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_n_u_P, __pyx_v_tag, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
-    if ((__pyx_t_2 != 0)) {
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_tag, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_p, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__pyx_t_2) {
       __Pyx_INCREF(__pyx_n_u_p);
       __pyx_t_1 = __pyx_n_u_p;
     } else {
@@ -4852,111 +4908,122 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
 
     /* "graphbrain/parsers/parser_hr.pyx":169
  *         elif tag[:1] == 'N':
- *             subtype = 'p' if 'P' in tag else 'c'
- *             sing_plur = 'p' if tag[-2] == 's' else 's'             # <<<<<<<<<<<<<<
+ *             subtype = 'p' if tag[2]=='p' else 'c'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'             # <<<<<<<<<<<<<<
  *             return 'c{}.{}'.format(subtype, sing_plur)
- *         elif tag[:1] == 'M':
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":
  */
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tag, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_3, __pyx_n_u_s, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_tag, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_n_u_s, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
-      __Pyx_INCREF(__pyx_n_u_p);
-      __pyx_t_1 = __pyx_n_u_p;
-    } else {
       __Pyx_INCREF(__pyx_n_u_s);
       __pyx_t_1 = __pyx_n_u_s;
+    } else {
+      __Pyx_INCREF(__pyx_n_u_p);
+      __pyx_t_1 = __pyx_n_u_p;
     }
     __pyx_v_sing_plur = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
     /* "graphbrain/parsers/parser_hr.pyx":170
- *             subtype = 'p' if 'P' in tag else 'c'
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             subtype = 'p' if tag[2]=='p' else 'c'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  *             return 'c{}.{}'.format(subtype, sing_plur)             # <<<<<<<<<<<<<<
- *         elif tag[:1] == 'M':
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":
  *             return 'c#'
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_c_2, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = NULL;
-    __pyx_t_5 = 0;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_c_2, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    __pyx_t_6 = 0;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_5 = 1;
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+        __pyx_t_6 = 1;
       }
     }
     #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_subtype, __pyx_v_sing_plur};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (PyFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_subtype, __pyx_v_sing_plur};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_subtype, __pyx_v_sing_plur};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+      PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_subtype, __pyx_v_sing_plur};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 170, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 170, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      if (__pyx_t_5) {
+        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
       }
       __Pyx_INCREF(__pyx_v_subtype);
       __Pyx_GIVEREF(__pyx_v_subtype);
-      PyTuple_SET_ITEM(__pyx_t_6, 0+__pyx_t_5, __pyx_v_subtype);
+      PyTuple_SET_ITEM(__pyx_t_7, 0+__pyx_t_6, __pyx_v_subtype);
       __Pyx_INCREF(__pyx_v_sing_plur);
       __Pyx_GIVEREF(__pyx_v_sing_plur);
-      PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_sing_plur);
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+      PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_sing_plur);
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":167
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ca'
  *         elif tag[:1] == 'N':             # <<<<<<<<<<<<<<
- *             subtype = 'p' if 'P' in tag else 'c'
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             subtype = 'p' if tag[2]=='p' else 'c'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":171
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  *             return 'c{}.{}'.format(subtype, sing_plur)
- *         elif tag[:1] == 'M':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":             # <<<<<<<<<<<<<<
  *             return 'c#'
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  */
   __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_M, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_M, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L7_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Ml, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L7_bool_binop_done:;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":172
  *             return 'c{}.{}'.format(subtype, sing_plur)
- *         elif tag[:1] == 'M':
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":
  *             return 'c#'             # <<<<<<<<<<<<<<
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'cd'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -4965,32 +5032,155 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":171
- *             sing_plur = 'p' if tag[-2] == 's' else 's'
+ *             sing_plur = 's' if tag[-2] == 's' else 'p'
  *             return 'c{}.{}'.format(subtype, sing_plur)
- *         elif tag[:1] == 'M':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":             # <<<<<<<<<<<<<<
  *             return 'c#'
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":173
- *         elif tag[:1] == 'M':
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":
  *             return 'c#'
- *         elif tag[:2] == 'Pd':             # <<<<<<<<<<<<<<
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:             # <<<<<<<<<<<<<<
  *             return 'cd'
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Pd, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_v_tag);
+  __pyx_t_1 = __pyx_v_tag;
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Mlomsn, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Mlompa, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_mpa, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_fsa, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi3m_n, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_msn, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_msl, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Qo, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_msan, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Agpfpay, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Agpmpny, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Rgp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Qo, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_msg, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Agpmsnn, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pi_msn, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Rgp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Rgp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pd_fpa, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pd_fsa, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_kp_u_Pd_fsl, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L9_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
 
     /* "graphbrain/parsers/parser_hr.pyx":174
  *             return 'c#'
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'cd'             # <<<<<<<<<<<<<<
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  *             return 'cw'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -4999,32 +5189,32 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":173
- *         elif tag[:1] == 'M':
+ *         elif tag[:1] == 'M' and tag[:2] != "Ml":
  *             return 'c#'
- *         elif tag[:2] == 'Pd':             # <<<<<<<<<<<<<<
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:             # <<<<<<<<<<<<<<
  *             return 'cd'
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":175
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'cd'
- *         elif tag[:1] == 'P':             # <<<<<<<<<<<<<<
+ *         elif tag[:2] == 'Pq':             # <<<<<<<<<<<<<<
  *             return 'cw'
- *         elif tag[:2] == 'Pp':
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_P, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Pq, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
+  if (__pyx_t_3) {
 
     /* "graphbrain/parsers/parser_hr.pyx":176
  *             return 'cd'
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  *             return 'cw'             # <<<<<<<<<<<<<<
- *         elif tag[:2] == 'Pp':
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':
  *             return 'ci'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -5033,18 +5223,18 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":175
- *         elif tag[:2] == 'Pd':
+ *         elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'cd'
- *         elif tag[:1] == 'P':             # <<<<<<<<<<<<<<
+ *         elif tag[:2] == 'Pq':             # <<<<<<<<<<<<<<
  *             return 'cw'
- *         elif tag[:2] == 'Pp':
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":177
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  *             return 'cw'
- *         elif tag[:2] == 'Pp':             # <<<<<<<<<<<<<<
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':             # <<<<<<<<<<<<<<
  *             return 'ci'
  *         else:
  */
@@ -5052,11 +5242,22 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Pp, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
+  if (!__pyx_t_2) {
+  } else {
+    __pyx_t_3 = __pyx_t_2;
+    goto __pyx_L30_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Pl, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __pyx_t_2;
+  __pyx_L30_bool_binop_done:;
+  if (__pyx_t_3) {
 
     /* "graphbrain/parsers/parser_hr.pyx":178
  *             return 'cw'
- *         elif tag[:2] == 'Pp':
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':
  *             return 'ci'             # <<<<<<<<<<<<<<
  *         else:
  *             return 'c'
@@ -5067,9 +5268,9 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":177
- *         elif tag[:1] == 'P':
+ *         elif tag[:2] == 'Pq':
  *             return 'cw'
- *         elif tag[:2] == 'Pp':             # <<<<<<<<<<<<<<
+ *         elif tag[:2] == 'Pp' or tag[:2] == 'Pl':             # <<<<<<<<<<<<<<
  *             return 'ci'
  *         else:
  */
@@ -5100,9 +5301,9 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("graphbrain.parsers.parser_hr.ParserHR._concept_type_and_subtype", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -5120,7 +5321,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_6_concept_t
  * 
  *     def _modifier_type_and_subtype(self, token):             # <<<<<<<<<<<<<<
  *         tag = token.tag_
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
 
 /* Python wrapper */
@@ -5191,13 +5392,15 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_t_2;
+  int __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("_modifier_type_and_subtype", 0);
 
   /* "graphbrain/parsers/parser_hr.pyx":183
  * 
  *     def _modifier_type_and_subtype(self, token):
  *         tag = token.tag_             # <<<<<<<<<<<<<<
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ma'
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_token, __pyx_n_s_tag); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
@@ -5208,21 +5411,32 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
   /* "graphbrain/parsers/parser_hr.pyx":184
  *     def _modifier_type_and_subtype(self, token):
  *         tag = token.tag_
- *         if tag[:1] == 'A':             # <<<<<<<<<<<<<<
+ *         if tag[:1] == 'A' and tag[2] == 'p':             # <<<<<<<<<<<<<<
  *             return 'ma'
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  */
   __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_tag, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_p, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L4_bool_binop_done:;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":185
  *         tag = token.tag_
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ma'             # <<<<<<<<<<<<<<
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  *             return 'mc'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -5233,30 +5447,41 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     /* "graphbrain/parsers/parser_hr.pyx":184
  *     def _modifier_type_and_subtype(self, token):
  *         tag = token.tag_
- *         if tag[:1] == 'A':             # <<<<<<<<<<<<<<
+ *         if tag[:1] == 'A' and tag[2] == 'p':             # <<<<<<<<<<<<<<
  *             return 'ma'
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":186
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ma'
- *         elif tag[:3] == 'Agc':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'A' and tag[2] == 'c':             # <<<<<<<<<<<<<<
  *             return 'mc'
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 3, NULL, NULL, &__pyx_slice__5, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Agc, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L6_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_tag, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_c, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L6_bool_binop_done:;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":187
  *             return 'ma'
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  *             return 'mc'             # <<<<<<<<<<<<<<
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  *             return 'ms'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -5265,32 +5490,43 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":186
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  *             return 'ma'
- *         elif tag[:3] == 'Agc':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'A' and tag[2] == 'c':             # <<<<<<<<<<<<<<
  *             return 'mc'
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":188
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  *             return 'mc'
- *         elif tag[:3] == 'Ags':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'A' and tag[2] == 's':             # <<<<<<<<<<<<<<
  *             return 'ms'
- *         elif tag == 'DT':
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 3, NULL, NULL, &__pyx_slice__5, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Ags, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_A, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L8_bool_binop_done;
+  }
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_tag, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_s, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L8_bool_binop_done:;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":189
  *             return 'mc'
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  *             return 'ms'             # <<<<<<<<<<<<<<
- *         elif tag == 'DT':
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'md'
  */
     __Pyx_XDECREF(__pyx_r);
@@ -5299,30 +5535,102 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":188
- *         elif tag[:3] == 'Agc':
+ *         elif tag[:1] == 'A' and tag[2] == 'c':
  *             return 'mc'
- *         elif tag[:3] == 'Ags':             # <<<<<<<<<<<<<<
+ *         elif tag[:1] == 'A' and tag[2] == 's':             # <<<<<<<<<<<<<<
  *             return 'ms'
- *         elif tag == 'DT':
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":190
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  *             return 'ms'
- *         elif tag == 'DT':             # <<<<<<<<<<<<<<
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:             # <<<<<<<<<<<<<<
  *             return 'md'
- *         # elif tag == 'PDT':
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
  */
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_tag, __pyx_n_u_DT, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_tag, __pyx_v_tag, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  if (__Pyx_PyObject_IsTrue(__pyx_t_1)) {
+    __Pyx_DECREF(__pyx_t_1);
+    __pyx_t_4 = PyList_New(21); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_n_u_Mlomsn);
+    __Pyx_GIVEREF(__pyx_n_u_Mlomsn);
+    PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_u_Mlomsn);
+    __Pyx_INCREF(__pyx_n_u_Mlompa);
+    __Pyx_GIVEREF(__pyx_n_u_Mlompa);
+    PyList_SET_ITEM(__pyx_t_4, 1, __pyx_n_u_Mlompa);
+    __Pyx_INCREF(__pyx_kp_u_Pi_mpa);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_mpa);
+    PyList_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u_Pi_mpa);
+    __Pyx_INCREF(__pyx_kp_u_Pi_fsa);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_fsa);
+    PyList_SET_ITEM(__pyx_t_4, 3, __pyx_kp_u_Pi_fsa);
+    __Pyx_INCREF(__pyx_kp_u_Pi3m_n);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi3m_n);
+    PyList_SET_ITEM(__pyx_t_4, 4, __pyx_kp_u_Pi3m_n);
+    __Pyx_INCREF(__pyx_kp_u_Pi_msn);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_msn);
+    PyList_SET_ITEM(__pyx_t_4, 5, __pyx_kp_u_Pi_msn);
+    __Pyx_INCREF(__pyx_kp_u_Pi_msl);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_msl);
+    PyList_SET_ITEM(__pyx_t_4, 6, __pyx_kp_u_Pi_msl);
+    __Pyx_INCREF(__pyx_n_u_Qo);
+    __Pyx_GIVEREF(__pyx_n_u_Qo);
+    PyList_SET_ITEM(__pyx_t_4, 7, __pyx_n_u_Qo);
+    __Pyx_INCREF(__pyx_kp_u_Pi_msan);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_msan);
+    PyList_SET_ITEM(__pyx_t_4, 8, __pyx_kp_u_Pi_msan);
+    __Pyx_INCREF(__pyx_n_u_Agpfpay);
+    __Pyx_GIVEREF(__pyx_n_u_Agpfpay);
+    PyList_SET_ITEM(__pyx_t_4, 9, __pyx_n_u_Agpfpay);
+    __Pyx_INCREF(__pyx_n_u_Agpmpny);
+    __Pyx_GIVEREF(__pyx_n_u_Agpmpny);
+    PyList_SET_ITEM(__pyx_t_4, 10, __pyx_n_u_Agpmpny);
+    __Pyx_INCREF(__pyx_n_u_Rgp);
+    __Pyx_GIVEREF(__pyx_n_u_Rgp);
+    PyList_SET_ITEM(__pyx_t_4, 11, __pyx_n_u_Rgp);
+    __Pyx_INCREF(__pyx_n_u_Qo);
+    __Pyx_GIVEREF(__pyx_n_u_Qo);
+    PyList_SET_ITEM(__pyx_t_4, 12, __pyx_n_u_Qo);
+    __Pyx_INCREF(__pyx_kp_u_Pi_msg);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_msg);
+    PyList_SET_ITEM(__pyx_t_4, 13, __pyx_kp_u_Pi_msg);
+    __Pyx_INCREF(__pyx_n_u_Agpmsnn);
+    __Pyx_GIVEREF(__pyx_n_u_Agpmsnn);
+    PyList_SET_ITEM(__pyx_t_4, 14, __pyx_n_u_Agpmsnn);
+    __Pyx_INCREF(__pyx_kp_u_Pi_msn);
+    __Pyx_GIVEREF(__pyx_kp_u_Pi_msn);
+    PyList_SET_ITEM(__pyx_t_4, 15, __pyx_kp_u_Pi_msn);
+    __Pyx_INCREF(__pyx_n_u_Rgp);
+    __Pyx_GIVEREF(__pyx_n_u_Rgp);
+    PyList_SET_ITEM(__pyx_t_4, 16, __pyx_n_u_Rgp);
+    __Pyx_INCREF(__pyx_n_u_Rgp);
+    __Pyx_GIVEREF(__pyx_n_u_Rgp);
+    PyList_SET_ITEM(__pyx_t_4, 17, __pyx_n_u_Rgp);
+    __Pyx_INCREF(__pyx_kp_u_Pd_fpa);
+    __Pyx_GIVEREF(__pyx_kp_u_Pd_fpa);
+    PyList_SET_ITEM(__pyx_t_4, 18, __pyx_kp_u_Pd_fpa);
+    __Pyx_INCREF(__pyx_kp_u_Pd_fsa);
+    __Pyx_GIVEREF(__pyx_kp_u_Pd_fsa);
+    PyList_SET_ITEM(__pyx_t_4, 19, __pyx_kp_u_Pd_fsa);
+    __Pyx_INCREF(__pyx_kp_u_Pd_fsl);
+    __Pyx_GIVEREF(__pyx_kp_u_Pd_fsl);
+    PyList_SET_ITEM(__pyx_t_4, 20, __pyx_kp_u_Pd_fsl);
+    __pyx_t_1 = __Pyx_PyBoolOrNull_FromLong(__Pyx_PySequence_ContainsTF(__pyx_v_tag, __pyx_t_4, Py_EQ)); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
     /* "graphbrain/parsers/parser_hr.pyx":191
  *             return 'ms'
- *         elif tag == 'DT':
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
  *             return 'md'             # <<<<<<<<<<<<<<
- *         # elif tag == 'PDT':
- *         #     return 'mp'
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
+ *              return 'mp'
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_n_u_md);
@@ -5330,27 +5638,79 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":190
- *         elif tag[:3] == 'Ags':
+ *         elif tag[:1] == 'A' and tag[2] == 's':
  *             return 'ms'
- *         elif tag == 'DT':             # <<<<<<<<<<<<<<
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:             # <<<<<<<<<<<<<<
  *             return 'md'
- *         # elif tag == 'PDT':
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
+ */
+  }
+
+  /* "graphbrain/parsers/parser_hr.pyx":192
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
+ *             return 'md'
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:             # <<<<<<<<<<<<<<
+ *              return 'mp'
+ *         elif tag[:2] == 'Pq':
+ */
+  __Pyx_INCREF(__pyx_v_tag);
+  __pyx_t_1 = __pyx_v_tag;
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Agpmpny, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Mls, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_2 = __pyx_t_3;
+    goto __pyx_L10_bool_binop_done;
+  }
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Rgp, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_2 = __pyx_t_3;
+  __pyx_L10_bool_binop_done:;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
+
+    /* "graphbrain/parsers/parser_hr.pyx":193
+ *             return 'md'
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
+ *              return 'mp'             # <<<<<<<<<<<<<<
+ *         elif tag[:2] == 'Pq':
+ *             return 'mw'
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(__pyx_n_u_mp);
+    __pyx_r = __pyx_n_u_mp;
+    goto __pyx_L0;
+
+    /* "graphbrain/parsers/parser_hr.pyx":192
+ *         elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
+ *             return 'md'
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:             # <<<<<<<<<<<<<<
+ *              return 'mp'
+ *         elif tag[:2] == 'Pq':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":194
- *         # elif tag == 'PDT':
- *         #     return 'mp'
- *         elif tag == 'WDT':             # <<<<<<<<<<<<<<
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
+ *              return 'mp'
+ *         elif tag[:2] == 'Pq':             # <<<<<<<<<<<<<<
  *             return 'mw'
  *         elif tag[:1] == 'M':
  */
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_tag, __pyx_n_u_WDT, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
-  if (__pyx_t_2) {
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 2, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_Pq, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (__pyx_t_3) {
 
     /* "graphbrain/parsers/parser_hr.pyx":195
- *         #     return 'mp'
- *         elif tag == 'WDT':
+ *              return 'mp'
+ *         elif tag[:2] == 'Pq':
  *             return 'mw'             # <<<<<<<<<<<<<<
  *         elif tag[:1] == 'M':
  *             return 'm#'
@@ -5361,16 +5721,16 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":194
- *         # elif tag == 'PDT':
- *         #     return 'mp'
- *         elif tag == 'WDT':             # <<<<<<<<<<<<<<
+ *         elif tag in ["Agpmpny", "Mls", "Rgp"]:
+ *              return 'mp'
+ *         elif tag[:2] == 'Pq':             # <<<<<<<<<<<<<<
  *             return 'mw'
  *         elif tag[:1] == 'M':
  */
   }
 
   /* "graphbrain/parsers/parser_hr.pyx":196
- *         elif tag == 'WDT':
+ *         elif tag[:2] == 'Pq':
  *             return 'mw'
  *         elif tag[:1] == 'M':             # <<<<<<<<<<<<<<
  *             return 'm#'
@@ -5378,9 +5738,9 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
  */
   __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_tag, 0, 1, NULL, NULL, &__pyx_slice__4, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_M, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_t_1, __pyx_n_u_M, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__pyx_t_2) {
+  if (__pyx_t_3) {
 
     /* "graphbrain/parsers/parser_hr.pyx":197
  *             return 'mw'
@@ -5395,7 +5755,7 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
     goto __pyx_L0;
 
     /* "graphbrain/parsers/parser_hr.pyx":196
- *         elif tag == 'WDT':
+ *         elif tag[:2] == 'Pq':
  *             return 'mw'
  *         elif tag[:1] == 'M':             # <<<<<<<<<<<<<<
  *             return 'm#'
@@ -5422,12 +5782,13 @@ static PyObject *__pyx_pf_10graphbrain_7parsers_9parser_hr_8ParserHR_8_modifier_
  * 
  *     def _modifier_type_and_subtype(self, token):             # <<<<<<<<<<<<<<
  *         tag = token.tag_
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("graphbrain.parsers.parser_hr.ParserHR._modifier_type_and_subtype", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -8140,16 +8501,20 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_, __pyx_k_, sizeof(__pyx_k_), 0, 1, 0, 0},
   {&__pyx_n_u_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 1, 0, 1},
-  {&__pyx_n_u_Agc, __pyx_k_Agc, sizeof(__pyx_k_Agc), 0, 1, 0, 1},
-  {&__pyx_n_u_Ags, __pyx_k_Ags, sizeof(__pyx_k_Ags), 0, 1, 0, 1},
+  {&__pyx_n_u_Agpfpay, __pyx_k_Agpfpay, sizeof(__pyx_k_Agpfpay), 0, 1, 0, 1},
+  {&__pyx_n_u_Agpmpny, __pyx_k_Agpmpny, sizeof(__pyx_k_Agpmpny), 0, 1, 0, 1},
+  {&__pyx_n_u_Agpmsnn, __pyx_k_Agpmsnn, sizeof(__pyx_k_Agpmsnn), 0, 1, 0, 1},
   {&__pyx_n_s_AlphaBeta, __pyx_k_AlphaBeta, sizeof(__pyx_k_AlphaBeta), 0, 0, 1, 1},
   {&__pyx_n_u_Cc, __pyx_k_Cc, sizeof(__pyx_k_Cc), 0, 1, 0, 1},
   {&__pyx_n_u_Cs, __pyx_k_Cs, sizeof(__pyx_k_Cs), 0, 1, 0, 1},
   {&__pyx_n_u_DT, __pyx_k_DT, sizeof(__pyx_k_DT), 0, 1, 0, 1},
   {&__pyx_n_u_EX, __pyx_k_EX, sizeof(__pyx_k_EX), 0, 1, 0, 1},
   {&__pyx_n_u_M, __pyx_k_M, sizeof(__pyx_k_M), 0, 1, 0, 1},
+  {&__pyx_n_u_Ml, __pyx_k_Ml, sizeof(__pyx_k_Ml), 0, 1, 0, 1},
+  {&__pyx_n_u_Mlompa, __pyx_k_Mlompa, sizeof(__pyx_k_Mlompa), 0, 1, 0, 1},
+  {&__pyx_n_u_Mlomsn, __pyx_k_Mlomsn, sizeof(__pyx_k_Mlomsn), 0, 1, 0, 1},
+  {&__pyx_n_u_Mls, __pyx_k_Mls, sizeof(__pyx_k_Mls), 0, 1, 0, 1},
   {&__pyx_n_u_N, __pyx_k_N, sizeof(__pyx_k_N), 0, 1, 0, 1},
-  {&__pyx_n_u_P, __pyx_k_P, sizeof(__pyx_k_P), 0, 1, 0, 1},
   {&__pyx_n_s_ParserHR, __pyx_k_ParserHR, sizeof(__pyx_k_ParserHR), 0, 0, 1, 1},
   {&__pyx_n_s_ParserHR___init, __pyx_k_ParserHR___init, sizeof(__pyx_k_ParserHR___init), 0, 0, 1, 1},
   {&__pyx_n_s_ParserHR__arg_type, __pyx_k_ParserHR__arg_type, sizeof(__pyx_k_ParserHR__arg_type), 0, 0, 1, 1},
@@ -8166,8 +8531,19 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ParserHR__predicate_post_type_an, __pyx_k_ParserHR__predicate_post_type_an, sizeof(__pyx_k_ParserHR__predicate_post_type_an), 0, 0, 1, 1},
   {&__pyx_n_s_ParserHR__token_type, __pyx_k_ParserHR__token_type, sizeof(__pyx_k_ParserHR__token_type), 0, 0, 1, 1},
   {&__pyx_n_s_ParserHR__verb_features, __pyx_k_ParserHR__verb_features, sizeof(__pyx_k_ParserHR__verb_features), 0, 0, 1, 1},
-  {&__pyx_n_u_Pd, __pyx_k_Pd, sizeof(__pyx_k_Pd), 0, 1, 0, 1},
+  {&__pyx_kp_u_Pd_fpa, __pyx_k_Pd_fpa, sizeof(__pyx_k_Pd_fpa), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pd_fsa, __pyx_k_Pd_fsa, sizeof(__pyx_k_Pd_fsa), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pd_fsl, __pyx_k_Pd_fsl, sizeof(__pyx_k_Pd_fsl), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi3m_n, __pyx_k_Pi3m_n, sizeof(__pyx_k_Pi3m_n), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_fsa, __pyx_k_Pi_fsa, sizeof(__pyx_k_Pi_fsa), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_mpa, __pyx_k_Pi_mpa, sizeof(__pyx_k_Pi_mpa), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_msan, __pyx_k_Pi_msan, sizeof(__pyx_k_Pi_msan), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_msg, __pyx_k_Pi_msg, sizeof(__pyx_k_Pi_msg), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_msl, __pyx_k_Pi_msl, sizeof(__pyx_k_Pi_msl), 0, 1, 0, 0},
+  {&__pyx_kp_u_Pi_msn, __pyx_k_Pi_msn, sizeof(__pyx_k_Pi_msn), 0, 1, 0, 0},
+  {&__pyx_n_u_Pl, __pyx_k_Pl, sizeof(__pyx_k_Pl), 0, 1, 0, 1},
   {&__pyx_n_u_Pp, __pyx_k_Pp, sizeof(__pyx_k_Pp), 0, 1, 0, 1},
+  {&__pyx_n_u_Pq, __pyx_k_Pq, sizeof(__pyx_k_Pq), 0, 1, 0, 1},
   {&__pyx_n_u_Qo, __pyx_k_Qo, sizeof(__pyx_k_Qo), 0, 1, 0, 1},
   {&__pyx_n_u_ROOT, __pyx_k_ROOT, sizeof(__pyx_k_ROOT), 0, 1, 0, 1},
   {&__pyx_n_u_Rgc, __pyx_k_Rgc, sizeof(__pyx_k_Rgc), 0, 1, 0, 1},
@@ -8176,7 +8552,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_TO, __pyx_k_TO, sizeof(__pyx_k_TO), 0, 1, 0, 1},
   {&__pyx_kp_u_Unknown_dependency_token_type_to, __pyx_k_Unknown_dependency_token_type_to, sizeof(__pyx_k_Unknown_dependency_token_type_to), 0, 1, 0, 0},
   {&__pyx_n_u_V, __pyx_k_V, sizeof(__pyx_k_V), 0, 1, 0, 1},
-  {&__pyx_n_u_WDT, __pyx_k_WDT, sizeof(__pyx_k_WDT), 0, 1, 0, 1},
   {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
   {&__pyx_kp_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 0},
   {&__pyx_n_u__8, __pyx_k__8, sizeof(__pyx_k__8), 0, 1, 0, 1},
@@ -8246,6 +8621,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_edge, __pyx_k_edge, sizeof(__pyx_k_edge), 0, 0, 1, 1},
   {&__pyx_n_u_expl, __pyx_k_expl, sizeof(__pyx_k_expl), 0, 1, 0, 1},
   {&__pyx_n_s_features, __pyx_k_features, sizeof(__pyx_k_features), 0, 0, 1, 1},
+  {&__pyx_n_u_flat, __pyx_k_flat, sizeof(__pyx_k_flat), 0, 1, 0, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_graphbrain, __pyx_k_graphbrain, sizeof(__pyx_k_graphbrain), 0, 0, 1, 1},
   {&__pyx_n_s_graphbrain_parsers_parser_hr, __pyx_k_graphbrain_parsers_parser_hr, sizeof(__pyx_k_graphbrain_parsers_parser_hr), 0, 0, 1, 1},
@@ -8377,7 +8753,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "graphbrain/parsers/parser_hr.pyx":165
  *         if dep == 'nmod':
  *             return 'cm'
- *         if tag[:1] == 'A':             # <<<<<<<<<<<<<<
+ *         if tag[:1] == 'A' and tag[2] == 'p':             # <<<<<<<<<<<<<<
  *             return 'ca'
  *         elif tag[:1] == 'N':
  */
@@ -8385,14 +8761,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "graphbrain/parsers/parser_hr.pyx":186
- *         if tag[:1] == 'A':
- *             return 'ma'
- *         elif tag[:3] == 'Agc':             # <<<<<<<<<<<<<<
- *             return 'mc'
- *         elif tag[:3] == 'Ags':
+  /* "graphbrain/parsers/parser_hr.pyx":217
+ *         elif token.tag_ == 'TO':
+ *             return 'ai'  # infinitive
+ *         elif token.tag_[:3] == 'Rgp':             # <<<<<<<<<<<<<<
+ *             return 'ac'  # comparative
+ *         elif token.tag_[:3] == 'Rgc':
  */
-  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_3, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
 
@@ -8466,7 +8842,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *     def _modifier_type_and_subtype(self, token):             # <<<<<<<<<<<<<<
  *         tag = token.tag_
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
   __pyx_tuple__20 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_token, __pyx_n_s_tag_2); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
@@ -9035,7 +9411,7 @@ if (!__Pyx_RefNanny) {
  * 
  *     def _modifier_type_and_subtype(self, token):             # <<<<<<<<<<<<<<
  *         tag = token.tag_
- *         if tag[:1] == 'A':
+ *         if tag[:1] == 'A' and tag[2] == 'p':
  */
   __pyx_t_5 = __Pyx_CyFunction_NewEx(&__pyx_mdef_10graphbrain_7parsers_9parser_hr_8ParserHR_9_modifier_type_and_subtype, 0, __pyx_n_s_ParserHR__modifier_type_and_subt, NULL, __pyx_n_s_graphbrain_parsers_parser_hr, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
