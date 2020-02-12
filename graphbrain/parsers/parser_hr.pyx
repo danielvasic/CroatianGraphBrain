@@ -63,7 +63,7 @@ class ParserHR(AlphaBeta):
         if len(head_type) > 0:
             head_type = head_type[0]
 
-        if dep == 'ROOT':
+        if dep.lower() == 'root':
             if self._is_verb(token):
                 return 'p'
             else:
@@ -171,7 +171,7 @@ class ParserHR(AlphaBeta):
             return 'c{}.{}'.format(subtype, sing_plur)
         elif tag[:1] == 'M' and tag[:2] != "Ml":
             return 'c#'
-        elif tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
+        elif tag in ["Mlomsn", "Mlompa", "Pi-mpa","Pi-fsa","Pi3m-n","Pi-msn","Pi-msl","Qo","Pi-msan","Agpfpay","Agpmpny","Rgp","Qo","Pi-msg","Agpmsnn","Pi-msn","Rgp","Pd-fpa", "Pd-fsa", "Pd-fsl"]:
             return 'cd'
         elif tag[:2] == 'Pq':
             return 'cw'
@@ -188,7 +188,7 @@ class ParserHR(AlphaBeta):
             return 'mc'
         elif tag[:1] == 'A' and tag[2] == 's':
             return 'ms'
-        elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa", "Pi-fsa", "Pi3m-n", "Pi-msn", "Pi-msl", "Qo","Pi-msan", "Agpfpay", "Agpmpny", "Rgp","Qo", "Pi-msg", "Agpmsnn", "Pi-msn", "Rgp", "Rgp", "Pd-fpa", "Pd-fsa", "Pd-fsl"]:
+        elif tag == tag in ["Mlomsn", "Mlompa", "Pi-mpa","Pi-fsa","Pi3m-n","Pi-msn","Pi-msl","Qo","Pi-msan","Agpfpay","Agpmpny","Rgp","Qo","Pi-msg","Agpmsnn","Pi-msn","Rgp","Pd-fpa", "Pd-fsa", "Pd-fsl"]:
             return 'md'
         elif tag in ["Agpmpny", "Mls", "Rgp"]:
              return 'mp'
@@ -201,27 +201,27 @@ class ParserHR(AlphaBeta):
 
     def _builder_type_and_subtype(self, token):
         tag = token.tag_
-        if tag[:2] == 'Cs':
+        if tag[:2] in ["Sg", "Sd", "Sa", "Sl", "Si"]:
             return 'br'  # relational (proposition)
-        elif tag[:2] == 'Cc':
+        elif tag[:2] == 'Cs':
             return 'b+'
-        elif tag == 'DT':
+        elif tag in ["Mlomsn", "Mlompa", "Pi-mpa","Pi-fsa","Pi3m-n","Pi-msn","Pi-msl","Qo","Pi-msan","Agpfpay","Agpmpny","Rgp","Qo","Pi-msg","Agpmsnn","Pi-msn","Rgp","Pd-fpa", "Pd-fsa", "Pd-fsl"]:
             return 'bd'
         else:
             return 'b'
 
     def _auxiliary_type_and_subtype(self, token):
-        if token.tag_[:2] == 'Qo':
+        if token.tag_[:2] in ["Qz", "Qq", "Qo", "Qr"]:
             return 'am'  # modal
-        elif token.tag_ == 'TO':
+        elif token.tag_ in ["Van"," Vap-sm","Vap-sf","Vap-sn","Vap-pm","Vap-pf","Vap-pn","Var1s","Var1p","Var2s","Var2p","Var3s","Var3p","Vam2s","Vam2p","Vaa1s","Vaa1p","Vaa2s","Vaa2p","Vaa3s","Vaa3p","Vae1s","Vae1p","Vae2s","Vae2p","Vae3s","Vae3p"]:
             return 'ai'  # infinitive
-        elif token.tag_[:3] == 'Rgp':
+        elif token.tag_[0] == 'R' amd token.tag_[2] == 'p':
             return 'ac'  # comparative
-        elif token.tag_[:3] == 'Rgc':
+        elif token.tag_[0] == 'R' amd token.tag_[2] == 'c':
             return 'as'  # superlative
-        elif token.tag_[:3] == 'Rgs' or token.dep_ == 'prt':
+        elif (token.tag_[0] == 'R' amd token.tag_[2] == 's') or token.dep_ == 'prt':
             return 'ap'  # particle
-        elif token.tag_[:2] == 'EX':
+        elif token.tag_[:2] in ["Vmr3s", "Vmr3p", "Vmp-sf", "Vmp-sn", "Vmp-pm", "Vmp-pf", "Vmp-pn", "Var3s", "Var3p"]:
             return 'ae'  # existential
         return 'a'
 
@@ -277,6 +277,16 @@ class ParserHR(AlphaBeta):
 
     def _verb_features(self, token):
         tag = token.tag_
+
+        tense = '-'
+        verb_form = '-'
+        aspect = '-'
+        mood = '-'
+        person = '-'
+        number = '-'
+        verb_type = '-'
+
+        '''
         if len(tag) > 2:
             if tag[2] == 'n':
                 verb_form = 'i'
@@ -301,31 +311,26 @@ class ParserHR(AlphaBeta):
             number = tag[4]
         else:
             number = '_'
-        
-        
-
         '''
-        if token.tag_ == 'VB':
+        
+        if token.tag_[:3].upper() == 'VMN':
             verb_form = 'i'  # infinitive
-        elif token.tag_ == 'VBD':
+        elif token.tag_[:3].upper() == 'VMP':
             verb_form = 'f'  # finite
             tense = '<'  # past
-        elif token.tag_ == 'VBG':
+        elif token.tag_[:3].upper() == 'VMR':
             verb_form = 'p'  # participle
-            tense = '|'  # present
+            tense = 'f'  # present
             aspect = 'g'  # progressive
-        elif token.tag_ == 'VBN':
+        elif token.tag_[:3].upper() == 'VMP':
             verb_form = 'p'  # participle
             tense = '<'  # past
             aspect = 'f'  # perfect
-        elif token.tag_ == 'VBP':
-            verb_form = 'f'  # finite
-            tense = '|'  # present
-        elif token.tag_ == 'VBZ':
+        elif token.tag_[:3].upper() == 'VMR3S':
             verb_form = 'f'  # finite
             tense = '|'  # present
             number = 's'  # singular
             person = '3'  # third person
-        '''
+
         features = (tense, verb_form, aspect, mood, person, number, verb_type)
         return ''.join(features)
