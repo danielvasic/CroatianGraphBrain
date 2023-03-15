@@ -6,10 +6,10 @@ from .nlp import token2str
 
 
 class ParserHR(AlphaBeta):
-    def __init__(self, lemmas=False):
+    def __init__(self, lemmas=False, nlp = spacy.load("hr")):
         super().__init__(lemmas=lemmas)
         self.lang = 'hr'
-        self.nlp = spacy.load('hr')
+        self.nlp = nlp
 
     # ===========================================
     # Implementation of language-specific methods
